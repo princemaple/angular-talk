@@ -1,0 +1,37 @@
+[
+  {
+    "name": "sg",
+    "position": "C",
+    "height": 0
+  },
+  {
+    "name": "Kobe Bryant",
+    "position": "SG",
+    "height": 1.98
+  },
+  {
+    "name": "Steve Nash",
+    "position": "PG",
+    "height": 1.91
+  },
+  {
+    "name": "Jason Williams",
+    "position": "PG",
+    "height": 1.85
+  },
+  {
+    "name": "Allen Iverson",
+    "position": "SG",
+    "height": 1.83
+  },
+  {
+    "name": "Ming Yao",
+    "position": "C",
+    "height": 2.29
+  },
+  {
+    "name": "Tim Duncan",
+    "position": "C/PF",
+    "height": 2.11
+  }
+]

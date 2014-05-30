@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Demo</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<!-- <body ng-app> -->
+<body ng-app="demo">
+  <!-- <section class="main"> -->
+  <section class="main" ng-controller="DemoCtrl">
+    <h1>Angular Demo</h1>
+    <!-- <input type="text" ng-model="something" autofocus> -->
+    <!-- <span>{{something}}</span> -->
+    <input type="text" ng-model="searchKey" autofocus>
+    <!-- <div class="results" ng-init="names = ['Alistair', 'Trav', 'Adam', 'Likun', 'Daniel']"> -->
+    <div class="results">
+      <!-- <p ng-repeat="name in (names | filter: searchKey)">{{name}}</p> -->
+      <!-- <p ng-repeat="player in players">{{player | json}}</p> -->
+      <!-- <div class="player clearfix" ng-repeat="player in players | filter: searchKey"> -->
+        <!-- <p class="name">{{player.name}}</p> -->
+        <!-- <p class="height">{{player.height | negate}}</p> -->
+        <!-- <p class="position">{{player.position}}</p> -->
+      <!-- </div> -->
+      <player class="cool player clearfix" ng-repeat="player in (players | filter: searchKey)"></player>
+    </div>
+  </section>
+
+  <script src="/angular-1.2.16/angular.js"></script>
+  <script src="/angular-1.2.16/angular-resource.js"></script>
+  <script src="/angular-1.2.16/angular-animate.js"></script>
+  <script src="/angular-1.2.16/angular-route.js"></script>
+  <script>
+    var demo = angular.module('demo', ['ngResource', 'ngAnimate']);
+
+    demo.factory('Players',
+    ['$resource',
+    function($resource) {
+      return $resource('/players.json');
+    }]);
+
+    demo.filter('format', function() {
+      return function(data, wrapper) {
+        return wrapper.replace('%@', data);
+      };
+    });
+
+    demo.directive('player', ['$filter', function($filter) {
+      return {
+        restrict: 'E',
+        replace: true,
+        // template: '\
+        //   <div>\
+        //     <p class="name">{{player.name}}</p>\
+        //     <p class="height">{{player.height}}</p>\
+        //     <p class="position">{{player.position}}</p>\
+        //   </div>'
+        templateUrl: 'player.html'
+      };
+    }]);
+
+    demo.controller('DemoCtrl',
+    ['$scope', 'Players',
+    function($scope, Players) {
+      $scope.players = Players.query();
+    }]);
+  </script>
+</body>
+</html>

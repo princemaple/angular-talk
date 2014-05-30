@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Joke</title>
+</head>
+<body ng-app="joke">
+
+  <extend html vocabulary></extend>
+
+  <!-- <extend></extend> -->
+  <!-- <p html>Wisp</p> -->
+  <!-- <button vocabulary>Show vocabulary</button> -->
+
+  <script src="/angular-1.2.16/angular.js"></script>
+  <script src="/angular-1.2.16/angular-resource.js"></script>
+  <script src="/angular-1.2.16/angular-animate.js"></script>
+  <script src="/angular-1.2.16/angular-route.js"></script>
+  <script>
+    var joke = angular.module('joke', []);
+
+    joke.directive('extend', function() {
+      return {
+        restrict: 'E',
+        replace: true,
+        template: '<h1>Hello world, it\'s a joke</h1>'
+      };
+    });
+
+    joke.directive('html', function() {
+      return {
+        restrict: 'A',
+        link: function(scope) {
+          console.log('Hidden message...');
+        }
+      };
+    });
+
+    joke.directive('vocabulary', function() {
+      return {
+        restrict: 'A',
+        link: function(scope, elem) {
+          elem.on('click', function() {
+            alert('supercalifragilisticexpialidocious');
+          });
+        }
+      };
+    });
+  </script>
+</body>
+</html>

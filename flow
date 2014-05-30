@@ -1,0 +1,15 @@
+MVC
+modular (not only just modular but also handles dependency)
+no dependency
+super testable
+extending html vocabulary
+2way data binding
+
+
+structure
+- module
+- directives
+- factory/service/provider
+- controller
+- filters
+-
